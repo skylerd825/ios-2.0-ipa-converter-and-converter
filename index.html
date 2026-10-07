@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Browser-side IPA converter and downloader demo for GitHub Pages.">
+  <title>IPA Converter 2.0</title>
+  <link rel="icon" href="conversion/images/favicon.ico">
+  <link rel="stylesheet" href="deployment/assets/css/style.css">
+  <script src="https://cdn.jsdelivr.net/npm/jszip@3.10.1/dist/jszip.min.js" defer></script>
+  <script type="module" src="deployment/assets/js/app.js" defer></script>
+</head>
+<body>
+  <header class="container">
+    <img class="logo" src="conversion/images/logo.png" alt="" width="72" height="72">
+    <h1>IPA Converter 2.0</h1>
+    <p class="subtitle">
+      A static, GitHub Pages-ready IPA inspector, converter/repacker, and downloader.
+      Files are processed locally in your browser.
+    </p>
+  </header>
+
+  <main class="container">
+    <section class="card">
+      <label class="dropzone" id="dropzone" for="ipaInput">
+        <input id="ipaInput" type="file" accept=".ipa,application/octet-stream">
+        <div>
+          <div class="drop-title">Drop an IPA here or choose a file</div>
+          <div class="drop-help">No upload server is required.</div>
+        </div>
+      </label>
+
+      <div id="status" class="status" role="status" aria-live="polite">
+        Waiting for an IPA…
+      </div>
+
+      <div id="fileMeta" class="meta"></div>
+      <ul id="fileList" class="file-list" aria-label="IPA archive contents"></ul>
+
+      <div class="actions">
+        <button id="downloadBtn" type="button" disabled>Convert &amp; Download IPA</button>
+        <button class="secondary" type="button" onclick="location.reload()">Reset</button>
+      </div>
+
+      <div class="notice">
+        <strong>Important:</strong> this demo repacks the IPA as a ZIP-compatible archive.
+        It does not decrypt, resign, modify, or bypass Apple code-signing. A repacked IPA
+        may not install unless it is signed appropriately for the target device.
+      </div>
+    </section>
+  </main>
+
+  <footer class="container">
+    IPA Converter 2.0 · Static GitHub Pages example · MIT License
+  </footer>
+</body>
+</html>
